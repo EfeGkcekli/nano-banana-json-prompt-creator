@@ -38,7 +38,6 @@ with st.sidebar:
 user_input = st.text_area(
     "Fotoğraf fikrini buraya yaz:", 
     height=100, 
-    placeholder="Örn: Gece yağmurlu havada otobüs durağında bekleyen hüzünlü palyaço..."
 )
 
 # Çalıştırma Butonu
@@ -48,7 +47,7 @@ if st.button("✨ Promptu Oluştur", type="primary"):
     else:
         client = OpenAI(api_key=api_key)
 
-        with st.spinner('Yapay zeka 90\'lara ışınlanıyor... 🎞️'):
+        with st.spinner('Üretiliyor...'):
             try:
                 response = client.chat.completions.create(
                     model=MODEL_ADI,
@@ -82,4 +81,5 @@ if st.button("✨ Promptu Oluştur", type="primary"):
                     st.json(parsed_json)
 
             except Exception as e:
+
                 st.error(f"Bir hata oluştu: {e}")
